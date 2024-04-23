@@ -1,4 +1,4 @@
-import { SingleJob } from "@/components/ui/singleJob";
+import { SingleJob } from "@/components/job/singleJob";
 
 async function getJobs() {
   const res = await fetch(`https://www.arbeitnow.com/api/job-board-api/`, {
