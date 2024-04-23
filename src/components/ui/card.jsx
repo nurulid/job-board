@@ -1,6 +1,7 @@
 import React from 'react';
 import { formatDateFromTimestamp, getFirstCharacter } from '@/lib/utils';
 import Link from 'next/link';
+import { Globe } from 'lucide-react';
 
 export const Card = ({ jobs }) => {
   return (
@@ -12,7 +13,6 @@ export const Card = ({ jobs }) => {
             company_name,
             title,
             remote,
-            url,
             tags,
             location,
             created_at,
@@ -40,7 +40,7 @@ export const Card = ({ jobs }) => {
                     <h3 className="text-xs capitalize mb-1 font-[500]">
                       {company_name}
                     </h3>
-                    <h2 className="text-2xl line-clamp-2 leading-[1.2] font-[500]">
+                    <h2 title={title} className="text-[22px] sm:text-2xl line-clamp-2 leading-[1.2] font-[500]">
                       {title}
                     </h2>
                   </div>
@@ -50,7 +50,10 @@ export const Card = ({ jobs }) => {
                 </div>
                 <div className="flex gap-1">
                   {tags.map((tag, i) => (
-                    <span key={i} className="border border-gray-400 py-2 px-3 rounded-full text-xs">
+                    <span
+                      key={i}
+                      className="border border-gray-400 py-2 px-3 rounded-full text-xs"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -58,8 +61,10 @@ export const Card = ({ jobs }) => {
               </div>
               <div className="flex justify-between items-center p-4 pb-2">
                 <div>
-                  {remote && (<h4 className='font-semibold'>Remote</h4>)}
-                  <h3 className="text-gray-400">{location}</h3>
+                  {remote && <h4 className="font-semibold">Remote</h4>}
+                  <h3 className="text-gray-400 font-[500]">
+                    <Globe size={14} className='inline -translate-y-[1px]'/> {location}
+                  </h3>
                 </div>
                 <Link
                   href={slug}

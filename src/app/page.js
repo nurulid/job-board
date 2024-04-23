@@ -10,12 +10,12 @@ async function getJobs() {
 
 export default async function Home() {
   const data = await getJobs();
-  const jobs = data.data.slice(0, 10);
+  const jobs = data.data.slice(0, 50);
   // console.log(jobs)
   return (
     <>
       <h1 className="text-3xl font-semibold mb-4">Home</h1>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
         <Card jobs={jobs}/>
       </div>
     </>
