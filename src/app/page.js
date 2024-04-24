@@ -1,8 +1,10 @@
-import { AllJobs } from '@/components/job/allJobs';
+import { JobList } from '@/components/job/jobList';
 
 async function getJobs() {
   const res = await fetch(`https://www.arbeitnow.com/api/job-board-api`, {
-    cache: 'no-cache',
+    next: {
+      revalidate: 30,
+    },
   });
   const jobs = await res.json();
   return jobs;
@@ -15,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <h1 className="text-3xl font-semibold mb-4">Home</h1>
-      <AllJobs jobs={jobs}/>
+      <JobList jobs={jobs}/>
     </>
   );
 }

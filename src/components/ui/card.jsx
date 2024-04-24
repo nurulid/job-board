@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { formatDateFromTimestamp, getFirstCharacter } from '@/lib/utils';
 import { Globe } from 'lucide-react';
 
-function Card({ jobs, activeButton }) {
-  // console.log(activeButton)
+function Card({ jobs, activeDisplay }) {
+  // console.log(activeDisplay)
   return (
     <>
       {jobs.map(
@@ -21,11 +21,12 @@ function Card({ jobs, activeButton }) {
             >
               <div
                 className={[
-                  'p-4 rounded-3xl space-y-8',
+                  'p-4 rounded-[19px] space-y-8',
+                  activeDisplay === "grid" ? "min-h-[252px]" : "",
                   remote ? 'bg-primary/50' : 'bg-violet-100',
                 ].join(' ')}
               >
-                {activeButton === "grid" && (
+                {activeDisplay === "grid" && (
                   <span className="bg-white px-4 py-2 rounded-full text-[15px] inline-block font-[500]">
                     {formatDateFromTimestamp(created_at)}
                   </span>
@@ -46,16 +47,18 @@ function Card({ jobs, activeButton }) {
                     {getFirstCharacter(company_name)}
                   </div>
                 </div>
-                <div className="flex gap-1">
-                  {tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="border border-gray-400 py-2 px-3 rounded-full text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {tags && (
+                  <div className="flex flex-wrap gap-1">
+                    {tags.slice(0,3).map((tag, i) => (
+                      <span
+                        key={i}
+                        className="border border-gray-400 py-2 px-3 rounded-full text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="flex justify-between items-center p-4 pb-2">
                 <div>
@@ -66,7 +69,7 @@ function Card({ jobs, activeButton }) {
                   </h3>
                 </div>
                 <div>
-                  {activeButton === "list" && (
+                  {activeDisplay === "row" && (
                     <span className="bg-white px-4 py-2 rounded-full text-[15px] inline-block font-[500]">
                       {formatDateFromTimestamp(created_at)}
                     </span>
