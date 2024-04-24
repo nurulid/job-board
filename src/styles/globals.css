@@ -14,7 +14,7 @@
   }
 
   .content h2 {
-    @apply text-xl font-[500] underline decoration-wavy underline-offset-8 pb-2;
+    @apply text-xl font-[500] pb-2;
   }
 
   .content a {
@@ -23,5 +23,9 @@
 
   .content ul {
     @apply list-disc list-outside pl-3;
+  }
+
+  .font-mono {
+    word-spacing: -7px;
   }
 }

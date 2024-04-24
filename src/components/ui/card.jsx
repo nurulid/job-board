@@ -32,13 +32,13 @@ function Card({ jobs, activeDisplay }) {
                   </span>
                 )}
                 <div className="flex justify-between items-center gap-4">
-                  <div className="w-[calc(100%-100px)]">
+                  <div className="w-[calc(100%-80px)]">
                     <h3 title={company_name} className="text-xs capitalize mb-1 font-[500] truncate">
                       {company_name}
                     </h3>
                     <h2
                       title={title}
-                      className="text-[22px] sm:text-2xl line-clamp-2 leading-[1.2] font-[500]"
+                      className="text-[22px] sm:text-2xl line-clamp-2 leading-[1.2] font-semibold font-mono"
                     >
                       {title}
                     </h2>
