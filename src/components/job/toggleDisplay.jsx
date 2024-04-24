@@ -1,5 +1,4 @@
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { useState } from 'react';
 import { Grid3X3, Rows3 } from 'lucide-react';
 
 export const ToggleDisplay = ({ activeDisplay, setActiveDisplay }) => {

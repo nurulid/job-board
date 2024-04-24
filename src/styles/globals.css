@@ -7,3 +7,21 @@
     @apply bg-[#F9F9F9];
   }
 }
+
+@layer components {
+  .content {
+    @apply text-gray-700;
+  }
+
+  .content h2 {
+    @apply text-xl font-[500] underline decoration-wavy underline-offset-8 pb-2;
+  }
+
+  .content a {
+    @apply underline hover:opacity-60 transition-all;
+  }
+
+  .content ul {
+    @apply list-disc list-outside pl-3;
+  }
+}
