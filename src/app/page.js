@@ -3,7 +3,7 @@ import { JobList } from '@/components/job/jobList';
 async function getJobs() {
   const res = await fetch(`https://www.arbeitnow.com/api/job-board-api`, {
     next: {
-      revalidate: 30,
+      revalidate: 0,
     },
   });
   const jobs = await res.json();

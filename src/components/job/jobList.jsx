@@ -47,6 +47,7 @@ const JobListHeader = ({
             </button>
           </li>
         </ul>
+        {/* TODO: Save active state to local storage */}
         <ToggleDisplay
           activeDisplay={activeDisplay}
           setActiveDisplay={setActiveDisplay}
@@ -59,25 +60,41 @@ const JobListHeader = ({
 export const JobList = ({ jobs, title }) => {
   const [activeDisplay, setActiveDisplay] = useState('grid');
   const [jobsData, setJobsData] = useState(jobs);
-  const [active, setActive] = useState('all');
   const [pageTitle, setPageTitle] = useState(title);
+  const [active, setActive] = useState('all');
 
   const handleAllJobs = () => {
     setJobsData(jobs);
     setActive('all');
     setPageTitle('All Jobs');
+    localStorage.setItem('activeFilter', 'all');
+    localStorage.removeItem('filteredJobs');
   };
 
   const handleRemoteFilter = () => {
-    const newJobs = jobs.filter((job) => job.remote === true);
-    setJobsData(newJobs);
+    const filterJobs = jobs.filter((job) => job.remote === true);
+    setJobsData(filterJobs);
     setActive('remote');
     setPageTitle('Remote Jobs');
+    localStorage.setItem('activeFilter', 'remote');
+    localStorage.setItem('filteredJobs', JSON.stringify(filterJobs));
   };
 
   useEffect(() => {
-    setJobsData(jobs);
-  }, []);
+    const storedActive = localStorage.getItem('activeFilter');
+    if (storedActive) {
+      setActive(storedActive);
+    }
+
+    const storedJobs = localStorage.getItem('filteredJobs');
+    if (storedJobs) {
+      setJobsData(JSON.parse(storedJobs));
+    }
+  }, []); 
+
+  // useEffect(() => {
+  //   setJobsData(jobs);
+  // }, []);
 
   return (
     <>
