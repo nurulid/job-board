@@ -16,8 +16,7 @@ export default async function Home() {
   // console.log(jobs)
   return (
     <>
-      <h1 className="text-3xl font-semibold mb-4">Explore</h1>
-      <JobList jobs={jobs}/>
+      <JobList jobs={jobs} title="All Jobs"/>
     </>
   );
 }

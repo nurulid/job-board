@@ -12,13 +12,14 @@ export const SingleJob = ({ data }) => {
   };
 
   const jobs = filterJob(data);
+  // console.log(jobs)
 
   return (
     <>
       {jobs.map((job, i) => (
         <div key={i} className="p-3 bg-white rounded-3xl border-[0.5px] border-black">
           <div className="p-7 bg-gray-100 rounded-3xl">
-            <h1 className="text-4xl font-semibold font-mono mb-4 leading-[1.2]">{job.title}</h1>
+            <h1 className="text-4xl font-semibold font-mono mb-4 leading-[1.2] break-words">{job.title}</h1>
             <h3 className="text-xl text-gray-500 capitalize">
               <Building2 className="inline-block -translate-y-[3px] mr-2"/>
               {job.company_name}

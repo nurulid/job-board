@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#CDEBC8',
+        //ijoChrome: '#B7D07B', // hitamnya: #263500 // source chrome browser
       },
     },
   },
