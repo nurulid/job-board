@@ -3,16 +3,28 @@
 import { ArrowUpRightFromSquare, Building2 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 export const SingleJob = ({ data }) => {
   const currentPath = usePathname();
   const pathSlug = currentPath.split('/').pop();
+  const containerRef = useRef(null);
 
   const filterJob = (data) => {
     return data.data.filter((job) => job.slug == pathSlug);
   };
   const jobs = filterJob(data);
   // console.log(jobs);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const links = containerRef.current.querySelectorAll('a');
+
+      links.forEach((link) => {
+        link.setAttribute('target', '_blank');
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -41,6 +53,7 @@ export const SingleJob = ({ data }) => {
             </h3>
           </div>
           <div
+            ref={containerRef}
             dangerouslySetInnerHTML={{ __html: job.description }}
             className="content space-y-4 py-5 px-7"
           />
